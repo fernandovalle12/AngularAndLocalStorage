@@ -1,1 +1,1 @@
-# angularandlocalstorage
+# Angular application using localStorage
