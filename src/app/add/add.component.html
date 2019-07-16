@@ -1,0 +1,61 @@
+<form>
+  <div class="form-group">
+    <label for="name">Nome do produto</label>
+    <input
+      label="Nome do produto"
+      name="name"
+      type="text"
+      class="form-control"
+      id="name"
+      required
+      maxlength="50"
+      pattern="[a-zA-Z]*"
+      ngModel
+    />
+    <label for="med">Unidade de medida</label>
+    <select class="form-control" required>
+      <option value="0" (change)="changeTipoTemplate(0)"></option>
+      <option value="1" (change)="changeTipoTemplate(1)">Litro</option>
+      <option value="2" (change)="changeTipoTemplate(2)">Quilograma</option>
+      <option value="3" (change)="changeTipoTemplate(3)">Unidade</option>
+    </select>
+    <ng-container *ngIf="tipo_template === 0">
+      teste
+    </ng-container>
+    <ng-container *ngIf="tipo_template === 1">
+      <label for="qtd">Quantidade</label>
+      <input type="number" class="form-control" />
+    </ng-container>
+    <label for="price">Preço</label>
+    <input type="price" class="form-control" id="price" required />
+    <span>Produto perecível</span>
+    <div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="inlineRadioOptions"
+          id="inlineRadio1"
+          value="yes"
+          required
+        />
+        <label class="form-check-label" for="inlineRadio1">Sim</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="inlineRadioOptions"
+          id="inlineRadio2"
+          value="no"
+        />
+        <label class="form-check-label" for="inlineRadio2">Não</label>
+      </div>
+    </div>
+    <label for="dateval">Data de validade</label>
+    <input type="date" class="form-control" id="dateval" />
+    <label for="datefab">Data de fabricação</label>
+    <input type="date" class="form-control" id="datefab" required />
+  </div>
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
