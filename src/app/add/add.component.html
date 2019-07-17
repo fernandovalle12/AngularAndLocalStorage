@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="submitQuote(quoteForm)">
   <div class="form-group">
     <label for="name">Nome do produto</label>
     <input
@@ -13,21 +13,21 @@
       ngModel
     />
     <label for="med">Unidade de medida</label>
-    <select class="form-control" required>
-      <option value="0" (change)="changeTipoTemplate(0)"></option>
-      <option value="1" (change)="changeTipoTemplate(1)">Litro</option>
-      <option value="2" (change)="changeTipoTemplate(2)">Quilograma</option>
-      <option value="3" (change)="changeTipoTemplate(3)">Unidade</option>
+    <select class="form-control" name="medida" required>
+      <option value="0"></option>
+      <option value="1">Litro</option>
+      <option value="2">Quilograma</option>
+      <option value="3">Unidade</option>
     </select>
-    <ng-container *ngIf="tipo_template === 0">
+    <ng-container *ngIf="medida === 0">
       teste
     </ng-container>
-    <ng-container *ngIf="tipo_template === 1">
+    <ng-container *ngIf="medida === 1">
       <label for="qtd">Quantidade</label>
       <input type="number" class="form-control" />
     </ng-container>
     <label for="price">Preço</label>
-    <input type="price" class="form-control" id="price" required />
+    <input type="price" class="form-control" id="price" name="price" required />
     <span>Produto perecível</span>
     <div>
       <div class="form-check form-check-inline">
@@ -36,6 +36,7 @@
           type="radio"
           name="inlineRadioOptions"
           id="inlineRadio1"
+          ng-model="perecivel"
           value="yes"
           required
         />
@@ -45,6 +46,7 @@
         <input
           class="form-check-input"
           type="radio"
+          ng-model="perecivel"
           name="inlineRadioOptions"
           id="inlineRadio2"
           value="no"
@@ -53,9 +55,9 @@
       </div>
     </div>
     <label for="dateval">Data de validade</label>
-    <input type="date" class="form-control" id="dateval" />
+    <input type="date" class="form-control" id="dateval" *ngIf="inlineRadioOptions == 'yes' ? '!required' : 'required'" />
     <label for="datefab">Data de fabricação</label>
-    <input type="date" class="form-control" id="datefab" required />
+    <input type="date" class="form-control" id="datefab" required name="datafab"/>
   </div>
   <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
