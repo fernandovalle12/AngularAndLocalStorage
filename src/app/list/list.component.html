@@ -1,1 +1,21 @@
-<p>list works!</p>
+<div class="col-md-3  mx-auto">
+  <div class="md-form">
+    <input
+      type="text"
+      class="form-control"
+      (ngModel)="(searchText)"
+      (keyup)="searchItems()"
+      id="search-input"
+      mdbInput
+    />
+    <label for="search-input"></label>
+  </div>
+</div>
+<table stickyHeader="true" hover="true" striped="true">
+  <thead class="sticky-top">
+    <tr>
+      <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}</th>
+    </tr>
+  </thead>
+</table>
+

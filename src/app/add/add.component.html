@@ -13,7 +13,7 @@
       ngModel
     />
     <label for="med">Unidade de medida</label>
-    <select class="form-control" name="medida" required>
+    <select class="form-control" (ngModel)="medida" required>
       <option value="0"></option>
       <option value="1">Litro</option>
       <option value="2">Quilograma</option>
@@ -36,8 +36,8 @@
           type="radio"
           name="inlineRadioOptions"
           id="inlineRadio1"
-          ng-model="perecivel"
           value="yes"
+          [checked]="perecivel"
           required
         />
         <label class="form-check-label" for="inlineRadio1">Sim</label>
@@ -46,16 +46,16 @@
         <input
           class="form-check-input"
           type="radio"
-          ng-model="perecivel"
           name="inlineRadioOptions"
           id="inlineRadio2"
           value="no"
+          [checked]="!perecivel"
         />
         <label class="form-check-label" for="inlineRadio2">Não</label>
       </div>
     </div>
     <label for="dateval">Data de validade</label>
-    <input type="date" class="form-control" id="dateval" *ngIf="inlineRadioOptions == 'yes' ? '!required' : 'required'" />
+    <input type="date" class="form-control" id="dateval" *ngIf="perecivel ? required : !required" />
     <label for="datefab">Data de fabricação</label>
     <input type="date" class="form-control" id="datefab" required name="datafab"/>
   </div>
