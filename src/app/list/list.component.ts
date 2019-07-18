@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 @Component({
   selector: '[app-list]',
@@ -8,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ListComponent implements OnInit {
   elements: any = [];
   headElements = ['Nome', 'Quantidade', 'Unidade', 'Preço', 'Perecível', 'Fabricação', 'Validade'];
-
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }

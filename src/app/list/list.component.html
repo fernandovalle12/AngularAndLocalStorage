@@ -2,20 +2,45 @@
   <div class="md-form">
     <input
       type="text"
-      class="md-form"
+      class="form-control form-control-sm"
       (ngModel)="(searchText)"
       (keyup)="searchItems()"
       id="search-input"
-      mdbInput
+      placeholder="Search"
     />
     <label for="search-input"></label>
   </div>
 </div>
-<table stickyHeader="true" hover="true" striped="true">
+<table stickyHeader="true" hover="true" class="table" striped="true">
   <thead class="sticky-top">
     <tr>
       <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}</th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+      <td scope="col">
+        {{ selectedData.name }}
+      </td>
+      <td scope="col">
+        {{ selectedData.qtde }}
+      </td>
+      <td scope="col">
+        {{ selectedData.medida }}
+      </td>
+      <td scope="col">
+        {{ selectedData.price }}
+      </td>
+      <td scope="col">
+        {{ selectedData.perecivel }}
+      </td>
+      <td scope="col">
+        {{ selectedData.datafab }}
+      </td>
+      <td scope="col">
+        {{ selectedData.dataval }}
+      </td>
+    </tr>
+  </tbody>
 </table>
 

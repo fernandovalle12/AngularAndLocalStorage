@@ -13,6 +13,7 @@ export class AddComponent implements OnInit {
     name: '',
     medida: '',
     price: '',
+    perecive: '',
     datafab: ''
   };
   theNumber: number = 0;

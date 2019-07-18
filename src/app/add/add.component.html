@@ -10,10 +10,10 @@
       required
       maxlength="50"
       pattern="[a-zA-Z]*"
-      ngModel
+      (ngModel)="selectedData.name"
     />
     <label for="med">Unidade de medida</label>
-    <select class="form-control" (ngModel)="medida" required>
+    <select class="form-control" (ngModel)="selectedData.medida" required>
       <option value="0"></option>
       <option value="1">Litro</option>
       <option value="2">Quilograma</option>
@@ -27,7 +27,7 @@
       <input type="number" class="form-control" />
     </ng-container>
     <label for="price">Preço</label>
-    <input type="price" class="form-control" id="price" name="price" required />
+    <input type="price" class="form-control" id="price" name="price" (ngModel)="selectedData.price" required />
     <span>Produto perecível</span>
     <div>
       <div class="form-check form-check-inline">
@@ -39,6 +39,7 @@
           value="yes"
           [checked]="perecivel"
           required
+          (ngModel)="selectedData.perecivel"
         />
         <label class="form-check-label" for="inlineRadio1">Sim</label>
       </div>
@@ -49,15 +50,16 @@
           name="inlineRadioOptions"
           id="inlineRadio2"
           value="no"
+          (ngModel)="selectedData.perecivel"
           [checked]="!perecivel"
         />
         <label class="form-check-label" for="inlineRadio2">Não</label>
       </div>
     </div>
     <label for="dateval">Data de validade</label>
-    <input type="date" class="form-control" id="dateval" *ngIf="perecivel ? required : !required" />
-    <label for="datefab">Data de fabricação</label>
-    <input type="date" class="form-control" id="datefab" required name="datafab"/>
+    <input type="date" class="form-control" id="dateval"/>
+    <label for="datefab" >Data de fabricação</label>
+    <input type="date" (ngModel)="selectedData.datafab" class="form-control" id="datefab" required name="datafab"/>
   </div>
   <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
