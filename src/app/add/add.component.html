@@ -1,4 +1,4 @@
-<form (ngSubmit)="submitQuote(quoteForm)">
+<form (ngSubmit)="onSubmitQuote(quoteForm)">
   <div class="form-group">
     <label for="name">Nome do produto</label>
     <input
@@ -27,7 +27,7 @@
       <input type="number" class="form-control" />
     </ng-container>
     <label for="price">Preço</label>
-    <input type="price" class="form-control" id="price" name="price" (ngModel)="selectedData.price" required />
+    <input type="price" class="form-control" id="price" name="price" (keydown)="mvalor()" (ngModel)="selectedData.price" required />
     <span>Produto perecível</span>
     <div>
       <div class="form-check form-check-inline">
@@ -37,9 +37,10 @@
           name="inlineRadioOptions"
           id="inlineRadio1"
           value="yes"
-          [checked]="perecivel"
+          ngChecked="perecivel"
           required
           (ngModel)="selectedData.perecivel"
+          (click)="isPerecivel"
         />
         <label class="form-check-label" for="inlineRadio1">Sim</label>
       </div>
@@ -50,14 +51,13 @@
           name="inlineRadioOptions"
           id="inlineRadio2"
           value="no"
-          (ngModel)="selectedData.perecivel"
-          [checked]="!perecivel"
+          ngModel="selectedData.perecivel"
         />
         <label class="form-check-label" for="inlineRadio2">Não</label>
       </div>
     </div>
     <label for="dateval">Data de validade</label>
-    <input type="date" class="form-control" id="dateval"/>
+    <input type="date" class="form-control" id="dateval" [required]="isPerecivel"/>
     <label for="datefab" >Data de fabricação</label>
     <input type="date" (ngModel)="selectedData.datafab" class="form-control" id="datefab" required name="datafab"/>
   </div>

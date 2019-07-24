@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AllPostsService } from './all-posts.service';
+import { AllPostsService } from '../all-posts.service';
 
 describe('AllPostsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
